@@ -11,9 +11,7 @@ bin_date_1_svc(void *argp, struct svc_req *rqstp)
 {
 	static long  result;
 
-	/*
-	 * insert server code here
-	 */
+	std::cout << "Hello world!" << std::endl;
 
 	return &result;
 }
