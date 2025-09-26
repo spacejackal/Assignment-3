@@ -11,7 +11,7 @@ bin_date_1_svc(void *argp, struct svc_req *rqstp)
 {
 	static long  result;
 
-	std::cout << "Hello world!" << std::endl;
+	printf("Hello world\n");
 
 	return &result;
 }
