@@ -56,25 +56,43 @@ main (int argc, char *argv[])
 		exit (1);
 	}
 	host = argv[1];
-	if(strcmp(argv[2], "insert") == 0){
-		insert_svc(5, 0);  // Example: insert value 5 at index 0
-
+	
+	// Create RPC client connection
+	CLIENT *clnt = clnt_create(host, DATE_PROG, DATE_VERS, "udp");
+	if (clnt == NULL) {
+		clnt_pcreateerror(host);
+		exit(1);
 	}
-	else if(strcmp(argv[2], "retrieve") == 0){
-		int value = retrieve_svc(0);  // Example: retrieve value at index 0
-		if (value != -1) {
-			printf("Retrieved value: %d\n", value);
+	
+	if(argc >= 3 && strcmp(argv[2], "insert") == 0){
+		insert_args args;
+		args.element = 5;  // Example value
+		args.index = 0;    // Example index
+		insert_array_1(&args, clnt);
+		printf("Inserted element %d at index %d\n", args.element, args.index);
+	}
+	else if(argc >= 3 && strcmp(argv[2], "retrieve") == 0){
+		int index = 0;  // Example index
+		int *result = retrieve_array_1(&index, clnt);
+		if (result != NULL) {
+			printf("Retrieved value: %d\n", *result);
 		} else {
-			printf("Index out of bounds\n");
+			printf("RPC call failed\n");
 		}
 	}
-	else if(strcmp(argv[2], "delete") == 0){
-		delete_svc(0);  // Example: delete value at index 0
+	else if(argc >= 3 && strcmp(argv[2], "delete") == 0){
+		int index = 0;  // Example index
+		delete_array_1(&index, clnt);
+		printf("Deleted element at index %d\n", index);
 	}
 	else{
-		printf ("usage: %s server_host\n", argv[0]);
-		exit (1);
+		// Default behavior - call date functions
+		date_prog_1(host);
+		clnt_destroy(clnt);
+		exit(0);
 	}
+	
+	clnt_destroy(clnt);
 
 	date_prog_1 (host);
 exit (0);

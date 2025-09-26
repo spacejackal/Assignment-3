@@ -8,8 +8,10 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define MAX_ARRAY_SIZE 100
 int length = 0;
-int arr<>;
+int arr[MAX_ARRAY_SIZE];
 
 long *
 bin_date_1_svc(void *argp, struct svc_req *rqstp)
@@ -61,4 +63,38 @@ void delete_svc(int index){
 	if (index >= 0 && index < length) {
 		arr[index] = 0;  // Reset the value to 0 (or any other meaningful value)
 	}
+}
+
+// RPC service functions
+void *
+insert_array_1_svc(insert_args *argp, struct svc_req *rqstp)
+{
+	static char dummy_result;
+	
+	printf("Server: insert_array_1 called - element: %d, index: %d\n", argp->element, argp->index);
+	insert_svc(argp->element, argp->index);
+	
+	return (void *) &dummy_result;
+}
+
+int *
+retrieve_array_1_svc(int *argp, struct svc_req *rqstp)
+{
+	static int result;
+	
+	printf("Server: retrieve_array_1 called - index: %d\n", *argp);
+	result = retrieve_svc(*argp);
+	
+	return &result;
+}
+
+void *
+delete_array_1_svc(int *argp, struct svc_req *rqstp)
+{
+	static char dummy_result;
+	
+	printf("Server: delete_array_1 called - index: %d\n", *argp);
+	delete_svc(*argp);
+	
+	return (void *) &dummy_result;
 }
