@@ -8,6 +8,8 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+int length = 0;
+int arr<>;
 
 long *
 bin_date_1_svc(void *argp, struct svc_req *rqstp)
@@ -37,4 +39,26 @@ str_date_1_svc(long *argp, struct svc_req *rqstp)
 	
 	result = date_string;
 	return &result;
+}
+
+
+void insert(int new_element, int index){
+	if (index >= 0 && index < length) {
+		arr[index] = new_element;
+	}
+	length++;
+}
+
+int retrieve(int index){
+	if (index >= 0 && index < length) {
+		return arr[index];
+	}
+	return -1;  // Meaningful value indicating out-of-bounds access
+}
+
+
+void delete(int index){
+	if (index >= 0 && index < length) {
+		arr[index] = 0;  // Reset the value to 0 (or any other meaningful value)
+	}
 }

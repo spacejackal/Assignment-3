@@ -50,6 +50,7 @@ int
 main (int argc, char *argv[])
 {
 	char *host;
+	char *request;
 
 	if (argc < 2) {
 		printf ("usage: %s server_host\n", argv[0]);
