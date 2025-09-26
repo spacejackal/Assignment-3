@@ -42,14 +42,14 @@ str_date_1_svc(long *argp, struct svc_req *rqstp)
 }
 
 
-void insert(int new_element, int index){
+void insert_svc(int new_element, int index){
 	if (index >= 0 && index < length) {
 		arr[index] = new_element;
 	}
 	length++;
 }
 
-int retrieve(int index){
+int retrieve_svc(int index){
 	if (index >= 0 && index < length) {
 		return arr[index];
 	}
@@ -57,7 +57,7 @@ int retrieve(int index){
 }
 
 
-void delete(int index){
+void delete_svc(int index){
 	if (index >= 0 && index < length) {
 		arr[index] = 0;  // Reset the value to 0 (or any other meaningful value)
 	}

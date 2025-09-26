@@ -50,13 +50,32 @@ int
 main (int argc, char *argv[])
 {
 	char *host;
-	char *request;
 
 	if (argc < 2) {
 		printf ("usage: %s server_host\n", argv[0]);
 		exit (1);
 	}
 	host = argv[1];
+	if(strcmp(argv[2], "insert") == 0){
+		insert_svc(5, 0);  // Example: insert value 5 at index 0
+
+	}
+	else if(strcmp(argv[2], "retrieve") == 0){
+		int value = retrieve_svc(0);  // Example: retrieve value at index 0
+		if (value != -1) {
+			printf("Retrieved value: %d\n", value);
+		} else {
+			printf("Index out of bounds\n");
+		}
+	}
+	else if(strcmp(argv[2], "delete") == 0){
+		delete_svc(0);  // Example: delete value at index 0
+	}
+	else{
+		printf ("usage: %s server_host\n", argv[0]);
+		exit (1);
+	}
+
 	date_prog_1 (host);
 exit (0);
 }
