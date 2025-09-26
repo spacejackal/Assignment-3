@@ -12,7 +12,6 @@ date_prog_1(char *host)
 {
 	CLIENT *clnt;
 	long  *result_1;
-	char *bin_date_1_arg;
 	char * *result_2;
 	long  str_date_1_arg;
 
@@ -24,14 +23,23 @@ date_prog_1(char *host)
 	}
 #endif	/* DEBUG */
 
-	result_1 = bin_date_1((void*)&bin_date_1_arg, clnt);
+	// Call bin_date_1 to get current time
+	result_1 = bin_date_1(NULL, clnt);
 	if (result_1 == (long *) NULL) {
 		clnt_perror (clnt, "call failed");
+	} else {
+		printf("Binary date from server: %ld\n", *result_1);
+		
+		// Use the binary date to get string representation
+		str_date_1_arg = *result_1;
+		result_2 = str_date_1(&str_date_1_arg, clnt);
+		if (result_2 == (char **) NULL) {
+			clnt_perror (clnt, "call failed");
+		} else {
+			printf("String date from server: %s\n", *result_2);
+		}
 	}
-	result_2 = str_date_1(&str_date_1_arg, clnt);
-	if (result_2 == (char **) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
+	
 #ifndef	DEBUG
 	clnt_destroy (clnt);
 #endif	 /* DEBUG */

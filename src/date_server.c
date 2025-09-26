@@ -5,25 +5,36 @@
  */
 
 #include "date.h"
+#include <time.h>
+#include <stdlib.h>
+#include <string.h>
 
 long *
 bin_date_1_svc(void *argp, struct svc_req *rqstp)
 {
-	static long  result;
+	static long result;
 
-	printf("Hello world\n");
-
+	printf("Server: bin_date_1 called\n");
+	result = time(NULL);  // Get current time as binary value
+	
 	return &result;
 }
 
 char **
 str_date_1_svc(long *argp, struct svc_req *rqstp)
 {
-	static char * result;
+	static char *result;
+	static char date_string[64];
+	time_t bintime;
 
-	/*
-	 * insert server code here
-	 */
-
+	printf("Server: str_date_1 called with time: %ld\n", *argp);
+	
+	bintime = *argp;
+	strcpy(date_string, ctime(&bintime));
+	
+	// Remove the newline character at the end
+	date_string[strlen(date_string) - 1] = '\0';
+	
+	result = date_string;
 	return &result;
 }
