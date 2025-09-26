@@ -25,9 +25,9 @@ extern  long * bin_date_1_svc(void *, struct svc_req *);
 extern  char ** str_date_1(long *, CLIENT *);
 extern  char ** str_date_1_svc(long *, struct svc_req *);
 extern int date_prog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
-extern int insert(int, int);
-extern int retrieve(int);
-extern int delete(int);
+extern int insert_svc(int, int);
+extern int retrieve_svc(int);
+extern int delete_svc(int);
 
 #else /* K&R C */
 #define BIN_DATE 1
