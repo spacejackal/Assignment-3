@@ -21,6 +21,9 @@ date_prog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
 	union {
 		long str_date_1_arg;
+		insert_args insert_array_1_arg;
+		int retrieve_array_1_arg;
+		int delete_array_1_arg;
 	} argument;
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
@@ -41,6 +44,24 @@ date_prog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		_xdr_argument = (xdrproc_t) xdr_long;
 		_xdr_result = (xdrproc_t) xdr_wrapstring;
 		local = (char *(*)(char *, struct svc_req *)) str_date_1_svc;
+		break;
+
+	case INSERT_ARRAY:
+		_xdr_argument = (xdrproc_t) xdr_insert_args;
+		_xdr_result = (xdrproc_t) xdr_void;
+		local = (char *(*)(char *, struct svc_req *)) insert_array_1_svc;
+		break;
+
+	case RETRIEVE_ARRAY:
+		_xdr_argument = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_int;
+		local = (char *(*)(char *, struct svc_req *)) retrieve_array_1_svc;
+		break;
+
+	case DELETE_ARRAY:
+		_xdr_argument = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_void;
+		local = (char *(*)(char *, struct svc_req *)) delete_array_1_svc;
 		break;
 
 	default:

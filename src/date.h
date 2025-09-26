@@ -14,6 +14,12 @@ extern "C" {
 #endif
 
 
+struct insert_args {
+	int element;
+	int index;
+};
+typedef struct insert_args insert_args;
+
 #define DATE_PROG 0x31234567
 #define DATE_VERS 1
 
@@ -24,10 +30,16 @@ extern  long * bin_date_1_svc(void *, struct svc_req *);
 #define STR_DATE 2
 extern  char ** str_date_1(long *, CLIENT *);
 extern  char ** str_date_1_svc(long *, struct svc_req *);
+#define INSERT_ARRAY 3
+extern  void * insert_array_1(insert_args *, CLIENT *);
+extern  void * insert_array_1_svc(insert_args *, struct svc_req *);
+#define RETRIEVE_ARRAY 4
+extern  int * retrieve_array_1(int *, CLIENT *);
+extern  int * retrieve_array_1_svc(int *, struct svc_req *);
+#define DELETE_ARRAY 5
+extern  void * delete_array_1(int *, CLIENT *);
+extern  void * delete_array_1_svc(int *, struct svc_req *);
 extern int date_prog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
-extern int insert_svc(int, int);
-extern int retrieve_svc(int);
-extern int delete_svc(int);
 
 #else /* K&R C */
 #define BIN_DATE 1
@@ -36,7 +48,26 @@ extern  long * bin_date_1_svc();
 #define STR_DATE 2
 extern  char ** str_date_1();
 extern  char ** str_date_1_svc();
+#define INSERT_ARRAY 3
+extern  void * insert_array_1();
+extern  void * insert_array_1_svc();
+#define RETRIEVE_ARRAY 4
+extern  int * retrieve_array_1();
+extern  int * retrieve_array_1_svc();
+#define DELETE_ARRAY 5
+extern  void * delete_array_1();
+extern  void * delete_array_1_svc();
 extern int date_prog_1_freeresult ();
+#endif /* K&R C */
+
+/* the xdr functions */
+
+#if defined(__STDC__) || defined(__cplusplus)
+extern  bool_t xdr_insert_args (XDR *, insert_args*);
+
+#else /* K&R C */
+extern bool_t xdr_insert_args ();
+
 #endif /* K&R C */
 
 #ifdef __cplusplus
