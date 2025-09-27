@@ -25,7 +25,6 @@ date_prog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		int retrieve_array_1_arg;
 		int delete_array_1_arg;
 	} argument;
-	
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
 	char *(*local)(char *, struct svc_req *);
