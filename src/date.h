@@ -39,6 +39,7 @@ extern  int * retrieve_array_1_svc(int *, struct svc_req *);
 #define DELETE_ARRAY 5
 extern  void * delete_array_1(int *, CLIENT *);
 extern  void * delete_array_1_svc(int *, struct svc_req *);
+
 extern int date_prog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */

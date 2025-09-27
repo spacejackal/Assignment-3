@@ -16,11 +16,11 @@ struct insert_args {
 };
 
 program DATE_PROG {
-version DATE_VERS {
-long BIN_DATE(void) = 1; /* procedure number = 1 */
-string STR_DATE(long) = 2; /* procedure number = 2 */
-void INSERT_ARRAY(insert_args) = 3; /* procedure number = 3 */
-int RETRIEVE_ARRAY(int) = 4; /* procedure number = 4 */
-void DELETE_ARRAY(int) = 5; /* procedure number = 5 */
-} = 1; /* version number = 1 */
+    version DATE_VERS {
+        long BIN_DATE(void) = 1; /* procedure number = 1 */
+        string STR_DATE(long) = 2; /* procedure number = 2 */
+        void INSERT_ARRAY(insert_args) = 3; /* procedure number = 3 */
+        int RETRIEVE_ARRAY(int) = 4; /* procedure number = 4 */
+        void DELETE_ARRAY(int) = 5; /* procedure number = 5 */
+    } = 1; /* version number = 1 */
 } = 0x31234567; /* program number = 0x31234567 */
