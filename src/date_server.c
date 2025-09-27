@@ -53,7 +53,7 @@ void insert_svc(int new_element, int index){
 
 int retrieve_svc(int index){
 	if (index >= 0 && index < length) {
-		return arr[index];
+		return *arr[index];
 	}
 	return -1;  // Meaningful value indicating out-of-bounds access
 }
