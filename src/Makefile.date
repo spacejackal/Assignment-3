@@ -12,9 +12,9 @@ SOURCES_SVC.c =
 SOURCES_SVC.h = 
 SOURCES.x = date.x
 
-TARGETS_SVC.c = date_svc.c date_server.c   
-TARGETS_CLNT.c = date_clnt.c date_client.c   
-TARGETS = date.h   date_clnt.c date_svc.c date_client.c date_server.c
+TARGETS_SVC.c = date_svc.c date_server.c  date_xdr.c
+TARGETS_CLNT.c = date_clnt.c date_client.c date_xdr.c
+TARGETS = date.h date_xdr.c  date_clnt.c date_svc.c date_client.c date_server.c
 
 OBJECTS_CLNT = $(SOURCES_CLNT.c:%.c=%.o) $(TARGETS_CLNT.c:%.c=%.o)
 OBJECTS_SVC = $(SOURCES_SVC.c:%.c=%.o) $(TARGETS_SVC.c:%.c=%.o)
