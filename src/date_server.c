@@ -45,15 +45,15 @@ str_date_1_svc(long *argp, struct svc_req *rqstp)
 
 
 void insert_svc(int new_element, int index){
-	if (index >= 0 && index < length) {
+	if (index >= 0 && index <= length) {
 		arr[index] = new_element;
 	}
 	length++;
 }
 
 int retrieve_svc(int index){
-	if (index >= 0 && index < length) {
-		return *arr[index];
+	if (index >= 0 && index <= length) {
+		return arr[index];
 	}
 	return -1;  // Meaningful value indicating out-of-bounds access
 }
