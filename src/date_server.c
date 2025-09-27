@@ -8,6 +8,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+#include "LinkedList.h"
 
 #define MAX_ARRAY_SIZE 100
 int length = 0;
