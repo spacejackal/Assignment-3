@@ -66,13 +66,13 @@ main (int argc, char *argv[])
 	
 	if(argc >= 3 && strcmp(argv[2], "insert") == 0){
 		insert_args args;
-		args.element = 5;  // Example value
-		args.index = 0;    // Example index
+		args.element = atoi(argv[3]);  // Example value
+		args.index = atoi(argv[4]);    // Example index
 		insert_array_1(&args, clnt);
 		printf("Inserted element %d at index %d\n", args.element, args.index);
 	}
 	else if(argc >= 3 && strcmp(argv[2], "retrieve") == 0){
-		int index = 0;  // Example index
+		int index = atoi(argv[3]);  // Example index
 		int *result = retrieve_array_1(&index, clnt);
 		if (result != NULL) {
 			printf("Retrieved value: %d\n", *result);
@@ -94,6 +94,6 @@ main (int argc, char *argv[])
 	
 	clnt_destroy(clnt);
 
-	date_prog_1 (host);
+	//date_prog_1 (host);
 exit (0);
 }
