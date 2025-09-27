@@ -60,7 +60,7 @@ int retrieve_svc(int index){
 
 
 void delete_svc(int index){
-	if (index >= 0 && index < length) {
+	if (index >= 0 && index <= length) {
 		arr[index] = 0;  // Reset the value to 0 (or any other meaningful value)
 	}
 }

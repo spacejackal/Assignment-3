@@ -87,9 +87,9 @@ main (int argc, char *argv[])
 	}
 	else{
 		// Default behavior - call date functions
-		date_prog_1(host);
-		clnt_destroy(clnt);
-		exit(0);
+		//date_prog_1(host);
+		//clnt_destroy(clnt);
+		//exit(0);
 	}
 	
 	clnt_destroy(clnt);
