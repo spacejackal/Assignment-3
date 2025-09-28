@@ -10,9 +10,10 @@
 #include <string.h>
 #include "LinkedList.h"
 
-#define MAX_ARRAY_SIZE 100
+
 int length = 0;
-int arr[MAX_ARRAY_SIZE];
+Node *head = NULL;  // Head of the linked list
+
 
 long *
 bin_date_1_svc(void *argp, struct svc_req *rqstp)
@@ -46,23 +47,30 @@ str_date_1_svc(long *argp, struct svc_req *rqstp)
 
 
 void insert_svc(int new_element, int index){
-	if (index >= 0 && index <= length) {
-		arr[index] = new_element;
+	if (index < 0) {
+		index = 0;  // Insert at head if index is negative
+	} else if (index > length) {
+		index = length;  // Append at end if index is greater than length
 	}
+	insert_node(&head, new_element, index);
 	length++;
 }
 
 int retrieve_svc(int index){
 	if (index >= 0 && index <= length) {
-		return arr[index];
+		Node *node = search_node(head, index);
+		if (node) {
+			return node->data;
+		}
 	}
 	return -1;  // Meaningful value indicating out-of-bounds access
 }
 
 
 void delete_svc(int index){
-	if (index >= 0 && index <= length) {
-		arr[index] = 0;  // Reset the value to 0 (or any other meaningful value)
+	if (index >= 0 && index < length) {
+		delete_node(&head, index);
+		length--;
 	}
 }
 
