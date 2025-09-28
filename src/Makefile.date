@@ -28,6 +28,8 @@ RPCGENFLAGS =
 
 # Targets 
 
+make: all
+
 all : $(CLIENT) $(SERVER)
 
 $(TARGETS) : $(SOURCES.x) 
