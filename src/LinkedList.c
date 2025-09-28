@@ -13,11 +13,6 @@ Node* create_node(int data) {
     return n;
 }
 
-/*
- * Insert a node with value 'data' at 'position' (0-based).
- * If position <= 0 insert at head.
- * If position >= length append at end.
- */
 void insert_node(Node **head, int data, int position) {
     if (!head) return;
 

@@ -47,9 +47,8 @@ str_date_1_svc(long *argp, struct svc_req *rqstp)
 
 
 void insert_svc(int new_element, int index){
-	if (index < 0) {
-		index = 0;  // Insert at head if index is negative
-	} else if (index > length) {
+
+	if (index > length) {
 		index = length;  // Append at end if index is greater than length
 	}
 	insert_node(&head, new_element, index);
@@ -57,14 +56,13 @@ void insert_svc(int new_element, int index){
 }
 
 int retrieve_svc(int index){
-	if (index >= 0 && index <= length) {
+	if (index >= 0 && index < length) {
 		Node *node = search_node(head, index);
 		if (node) {
 			return node->data;
 		}
 	}
-	return -1;  // Meaningful value indicating out-of-bounds access
-}
+	return -1; 
 
 
 void delete_svc(int index){
@@ -103,7 +101,9 @@ delete_array_1_svc(int *argp, struct svc_req *rqstp)
 	static char dummy_result;
 	
 	printf("Server: delete_array_1 called - index: %d\n", *argp);
-	delete_svc(*argp);
-	
+	if(*argp < length){
+		delete_svc(*argp);
+	}
+
 	return (void *) &dummy_result;
 }
