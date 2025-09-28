@@ -80,7 +80,7 @@ Node* search_node(Node *head, int index) {
         head = head->next;
         idx++;
     }
-    return -1;
+    return NULL;
 }
 
 /*
