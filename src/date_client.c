@@ -57,7 +57,7 @@ main (int argc, char *argv[])
 	}
 	host = argv[1];
 	
-	// Create RPC client connection
+	
 	CLIENT *clnt = clnt_create(host, DATE_PROG, DATE_VERS, "udp");
 	if (clnt == NULL) {
 		clnt_pcreateerror(host);
@@ -68,12 +68,14 @@ main (int argc, char *argv[])
 		insert_args args;
 		args.element = atoi(argv[3]);  
 		args.index = atoi(argv[4]);
+
 		insert_array_1(&args, clnt);
 		printf("Inserted element %d at index %d\n", atoi(argv[3]), atoi(argv[4]));
 	}
 	else if(argc >= 3 && strcmp(argv[2], "retrieve") == 0){
 		int index = atoi(argv[3]);  
 		int *result = retrieve_array_1(&index, clnt);
+
 		if (result != NULL) {
 			printf("Retrieved value: %d\n", *result);
 		} else {
@@ -82,6 +84,7 @@ main (int argc, char *argv[])
 	}
 	else if(argc >= 3 && strcmp(argv[2], "delete") == 0){
 		int index = atoi(argv[3]);  
+		
 		delete_array_1(&index, clnt);
 		printf("Deleted element at index %d if that index was valid\n", index);
 	}
