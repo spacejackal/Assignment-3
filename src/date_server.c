@@ -49,7 +49,7 @@ str_date_1_svc(long *argp, struct svc_req *rqstp)
 void insert_svc(int new_element, int index){
 
 	if (index > length) {
-		index = length;  // Append at end if index is greater than length
+		index = length;  
 	}
 	insert_node(&head, new_element, index);
 	length++;
@@ -103,6 +103,7 @@ delete_array_1_svc(int *argp, struct svc_req *rqstp)
 	
 	printf("Server: delete_array_1 called - index: %d\n", *argp);
 	if(*argp < length){
+		printf("length = %d\n", *argp);
 		delete_svc(*argp);
 	}
 
