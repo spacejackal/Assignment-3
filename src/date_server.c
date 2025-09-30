@@ -63,6 +63,7 @@ int retrieve_svc(int index){
 		}
 	}
 	return -1; 
+}
 
 
 void delete_svc(int index){

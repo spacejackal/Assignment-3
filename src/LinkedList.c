@@ -64,7 +64,7 @@ void delete_node(Node **head, int index) {
 }
 
 /*
- * Return pointer to first node whose data == data, else NULL.
+ * Return pointer to node at index.
  */
 Node* search_node(Node *head, int index) {
     int idx = 0;
@@ -78,16 +78,3 @@ Node* search_node(Node *head, int index) {
     return NULL;
 }
 
-/*
- * Free all nodes and set head to NULL.
- */
-void free_list(Node **head) {
-    if (!head) return;
-    Node *curr = *head;
-    while (curr) {
-        Node *next = curr->next;
-        free(curr);
-        curr = next;
-    }
-    *head = NULL;
-}
