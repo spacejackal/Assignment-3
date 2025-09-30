@@ -76,15 +76,12 @@ main (int argc, char *argv[])
 		int index = atoi(argv[3]);  
 		int *result = retrieve_array_1(&index, clnt);
 
-		if (result != NULL) {
 			printf("Retrieved value: %d\n", *result);
-		} else {
-			printf("RPC call failed\n");
-		}
+
 	}
 	else if(argc >= 3 && strcmp(argv[2], "delete") == 0){
 		int index = atoi(argv[3]);  
-		
+
 		delete_array_1(&index, clnt);
 		printf("Deleted element at index %d if that index was valid\n", index);
 	}
