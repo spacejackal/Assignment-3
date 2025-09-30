@@ -73,7 +73,7 @@ void delete_svc(int index){
 	}
 }
 
-// RPC service functions
+
 void *
 insert_array_1_svc(insert_args *argp, struct svc_req *rqstp)
 {
@@ -103,7 +103,7 @@ delete_array_1_svc(int *argp, struct svc_req *rqstp)
 	
 	printf("Server: delete_array_1 called - index: %d\n", *argp);
 	if(*argp < length){
-		printf("length = %d\n", *argp);
+		printf("length = %d\n", length);
 		delete_svc(*argp);
 	}
 
