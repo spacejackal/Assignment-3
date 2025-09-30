@@ -69,7 +69,7 @@ main (int argc, char *argv[])
 		args.element = atoi(argv[3]);  
 		args.index = atoi(argv[4]);
 		insert_array_1(&args, clnt);
-		printf("Inserted element %d at index %d\n", args.element, args.index);
+		printf("Inserted element %d at index %d\n", atoi(argv[3]), atoi(argv[4]));
 	}
 	else if(argc >= 3 && strcmp(argv[2], "retrieve") == 0){
 		int index = atoi(argv[3]);  
