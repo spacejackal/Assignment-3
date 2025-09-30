@@ -66,13 +66,13 @@ main (int argc, char *argv[])
 	
 	if(argc >= 3 && strcmp(argv[2], "insert") == 0){
 		insert_args args;
-		args.element = atoi(argv[3]);  // Example value
-		args.index = atoi(argv[4]);    // Example index
+		args.element = atoi(argv[3]);  
+		args.index = atoi(argv[4]);
 		insert_array_1(&args, clnt);
 		printf("Inserted element %d at index %d\n", args.element, args.index);
 	}
 	else if(argc >= 3 && strcmp(argv[2], "retrieve") == 0){
-		int index = atoi(argv[3]);  // Example index
+		int index = atoi(argv[3]);  
 		int *result = retrieve_array_1(&index, clnt);
 		if (result != NULL) {
 			printf("Retrieved value: %d\n", *result);
@@ -81,16 +81,11 @@ main (int argc, char *argv[])
 		}
 	}
 	else if(argc >= 3 && strcmp(argv[2], "delete") == 0){
-		int index = 0;  // Example index
+		int index = 0;  
 		delete_array_1(&index, clnt);
 		printf("Deleted element at index %d\n", index);
 	}
-	else{
-		// Default behavior - call date functions
-		//date_prog_1(host);
-		//clnt_destroy(clnt);
-		//exit(0);
-	}
+
 	
 	clnt_destroy(clnt);
 
